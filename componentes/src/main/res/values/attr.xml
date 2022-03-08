@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="tamTitleEditText" format="dimension" />
+    <attr name="title" format="string" />
+    <attr name="colorTitle" format="color" />
+    <attr name="tamTitle" format="dimension" />
+    <attr name="tamTextEditText" format="dimension" />
+    <attr name="mascara" format="string" />
+    <attr name="hint" format="string" />
+    <attr name="enabled" format="boolean" />
+    <attr name="focusable" format="boolean" />
+    <attr name="requestfocus" format="boolean" />
+    <attr name="coricon" format="color" />
+    <attr name="singleLine" format="boolean" />
+    <attr name="legendaRequerido" format="string" />
+    <attr name="text" format="string" />
+    <attr name="progressColor" format="color" />
+    <attr name="progressSize" format="dimension"/>
+    <attr name="requerido" format="boolean" />
+    <attr name="tag" format="string" />
+    <attr name="maxLength" format="integer" />
+    <attr name="showSymbol" format="boolean" />
+    <attr name="locale" format="string" />
+
+    <attr name="inputType">
+        <flag name="none" value="0x00000000" />
+        <flag name="textPassword" value="0x00000081" />
+        <flag name="numberDecimal" value="0x00002002" />
+        <flag name="textMultiLine" value="0x00020001" />
+        <flag name="textMultiLineAllCaps" value="0x00000145" />
+        <flag name="textCapCharacters" value="0x00020022" />
+        <flag name="number" value="0x00020034" />
+        <flag name="textEmailAddress" value="0x00026534" />
+    </attr>
+
+    <declare-styleable name="RoundishImageView">
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="roundedCorners">
+            <flag name="topLeft" value="1" />
+            <flag name="topRight" value="2" />
+            <flag name="bottomRight" value="4" />
+            <flag name="bottomLeft" value="8" />
+            <flag name="all" value="15" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="EditTextLegenda">
+        <attr name="title"/>
+        <attr name="tamTitle"/>
+        <attr name="colorTitle" />
+        <attr name="tamTitleEditText"/>
+        <attr name="tamTextEditText" />
+        <attr name="hint" />
+        <attr name="text" />
+        <attr name="lines" format="integer" />
+        <attr name="maxLength" />
+        <attr name="iconLeft" format="reference" />
+        <attr name="iconRigth" format="reference" />
+        <attr name="coricon"/>
+        <attr name="enabled" />
+        <attr name="focusable" />
+        <attr name="requestfocus" />
+        <attr name="requerido" />
+        <attr name="isDate" format="boolean" />
+        <attr name="isDateHour" format="boolean" />
+        <attr name="iconRigthVisible" format="boolean" />
+        <attr name="tag" />
+        <attr name="mascara" />
+        <attr name="singleLine" />
+        <attr name="inputType"/>
+        <attr name="legendaRequerido"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="EditTextCurrencyLegenda">
+        <attr name="title"/>
+        <attr name="colorTitle" />
+        <attr name="tamTitleEditText"/>
+        <attr name="tamTextEditText" />
+        <attr name="hint" />
+        <attr name="text" />
+        <attr name="tamTitle" />
+        <attr name="maxLength" />
+        <attr name="coricon"/>
+        <attr name="enabled" />
+        <attr name="focusable" />
+        <attr name="requestfocus" />
+        <attr name="requerido"/>
+        <attr name="tag" />
+        <attr name="mascara" />
+        <attr name="singleLine" />
+        <attr name="inputType"/>
+        <attr name="legendaRequerido"/>
+        <attr name="showSymbol" />
+        <attr name="locale"/>
+    </declare-styleable>
+
+    <declare-styleable name="EditTextCalendarLegenda">
+        <attr name="tamTitleEditText" />
+        <attr name="title"/>
+        <attr name="colorTitle"/>
+        <attr name="tamTitle" />
+        <attr name="tamTextEditText"/>
+        <attr name="hora" format="boolean"/>
+        <attr name="inicializa" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="SearchLegenda">
+        <attr name="title" />
+        <attr name="colorTitle"/>
+        <attr name="tamTitle" />
+        <attr name="tamTitleEditText"/>
+        <attr name="tamTextEditText"/>
+        <attr name="mascara" />
+        <attr name="hint" />
+        <attr name="enabled" />
+        <attr name="focusable" />
+        <attr name="requestfocus" />
+        <attr name="coricon"/>
+
+        <attr name="inputType"/>
+    </declare-styleable>
+
+    <declare-styleable name="SpinnerLegenda">
+        <attr name="entries" format="reference" />
+        <attr name="tamTitle" />
+        <attr name="title"/>
+        <attr name="colorTitle" />
+        <attr name="tamTitleEditText" />
+    </declare-styleable>
+
+    <declare-styleable name="TextViewLegenda">
+        <attr name="title" />
+        <attr name="colorTitle" />
+        <attr name="tamTitle" />
+        <attr name="descricao" format="string" />
+        <attr name="corDescricao" format="color" />
+        <attr name="tamDescricao" format="dimension" />
+        <attr name="singleLine" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ProgressImageView">
+        <attr name="src" format="reference" />
+        <attr name="progressColor" />
+        <attr name="progressSize" />
+    </declare-styleable>
+
+    <declare-styleable name="ProgressButton">
+        <attr name="text"/>
+        <attr name="progressColor" />
+        <attr name="progressSize" />
+    </declare-styleable>
+
+    <declare-styleable name="SwipeLayout">
+        <attr name="swipeDirection" format="integer">
+            <flag name="left" value="1"/>
+            <flag name="right" value="2"/>
+        </attr>
+        <attr name="isEnabledSwipe" format="boolean"/>
+        <attr name="isFreeDragAfterOpen" format="boolean"/>
+        <attr name="isFreeHorizontalDrag" format="boolean"/>
+        <attr name="isContinuousSwipe" format="boolean"/>
+        <attr name="isTogether" format="boolean"/>
+        <attr name="rightItem" format="reference"/>
+        <attr name="leftItem" format="reference"/>
+        <attr name="draggedItem" format="reference"/>
+        <attr name="autoMovingSensitivity" format="integer"/>
+        <attr name="rightDragViewPadding" format="dimension"/>
+        <attr name="leftDragViewPadding" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="GeometricProgressView">
+        <attr name="gp_type" format="enum">
+            <enum name="kite" value="0" />
+            <enum name="triangle" value="1" />
+        </attr>
+        <attr name="gp_number_of_angles" format="integer" />
+        <attr name="gp_color" format="color" />
+        <attr name="gp_duration" format="integer" />
+        <attr name="gp_figure_padding" format="dimension" />
+        <attr name="gp_style" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="DotLoader">
+        <attr name="dot_radius" format="dimension" />
+        <attr name="color_array" format="reference" />
+        <attr name="number_of_dots" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="currencyEditText">
+        <attr name="locale" />
+        <attr name="showSymbol"/>
+        <attr name="decimalPoints" format="integer" />
+        <attr name="allow_negative_values" format="boolean" />
+        <attr name="decimal_digits" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="RecyclerViewButton">
+        <attr name="locationButton" />
+        <attr name="numberOfColumns" format="integer" />
+        <attr name="horizontalDivider" format="boolean"/>
+        <attr name="verticalDivider" format="boolean"/>
+        <attr name="refresh" format="boolean"/>
+        <attr name="basic" format="boolean"/>
+        <attr name="listitem" format="reference"/>
+    </declare-styleable>
+
+    <attr name="locationButton">
+        <flag name="center" value="0" />
+        <flag name="left" value="1" />
+        <flag name="right" value="2" />
+        <flag name="none" value="3" />
+    </attr>
+
+    <declare-styleable name="HelpButton">
+        <attr name="color"/>
+        <attr name="helpMsg" format="string"/>
+    </declare-styleable>
+
+</resources>
