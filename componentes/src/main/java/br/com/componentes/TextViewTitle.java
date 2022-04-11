@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.text.Spanned;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class TextViewTitle extends FrameLayout {
     private float tamDescricao;
     private boolean singleLine;
     private Context context;
+    private int gravity;
 
 
     public TextViewTitle(@NonNull Context context) {
@@ -63,6 +65,8 @@ public class TextViewTitle extends FrameLayout {
             corDescricao = typedArray.getColorStateList(R.styleable.TextViewLegenda_corDescricao);
             tamDescricao = getSizeFontDescricao(typedArray.getString(R.styleable.TextViewLegenda_tamDescricao));
             singleLine = typedArray.getBoolean(R.styleable.TextViewLegenda_singleLine, false);
+            gravity = typedArray.getInt(R.styleable.TextViewLegenda_gravity, Gravity.NO_GRAVITY);
+
             return;
         }
         descricao = "descricao";
@@ -113,7 +117,8 @@ public class TextViewTitle extends FrameLayout {
 
         descricaoTextView.setSingleLine(singleLine);
 
-        //descricaoTextView.setSingleLine();
+        legendaTextView.setGravity(gravity);
+        descricaoTextView.setGravity(gravity);
     }
 
     public void setDescricao(String descricao) {

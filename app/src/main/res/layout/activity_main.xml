@@ -4,21 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context=".MainActivity">
 
-    <br.com.componentes.RecyclerViewButton
-        android:id="@+id/recyclerViewButton"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:basic="false"
-        app:horizontalDivider="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <br.com.componentes.TextViewTitle
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:colorTitle="@color/colorAccent"
+        app:corDescricao="@color/black"
+        app:descricao="Goiânia  adsdasdadsdasdsdasdsadsads"
+        app:gravity="left"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:locationButton="right"
-        app:numberOfColumns="1"
-        app:refresh="true"
-        app:verticalDivider="true" />
+        app:layout_constraintWidth_percent="0.2"
+        app:singleLine="false"
+        app:tamDescricao="16sp"
+        app:tamTitle="13sp"
+        app:title="Cidade" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,9 +23,7 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerViewButton recyclerViewButton = findViewById(R.id.recyclerViewButton);
-        //recyclerViewButton.setAdapter(this, new Adapter( generateData() ) );
-        recyclerViewButton.setAdapter(this, new CustomAdapter(generateData(), this));
+
     }
 
     private List<Cidade> generateData() {

@@ -5,6 +5,13 @@
       <map>
         <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/app/src/main/res/layout/activity_main.xml" value="0.35104166666666664" />
         <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/app/src/main/res/layout/cidade_item.xml" value="0.35104166666666664" />
+        <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/componentes/src/main/res/drawable-night/edittext_ui.xml" value="0.2535" />
+        <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/componentes/src/main/res/drawable/edit_selector_ui.xml" value="0.2535" />
+        <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/componentes/src/main/res/drawable/edittext_ui.xml" value="0.2535" />
+        <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/componentes/src/main/res/layout/view_edittext_legenda_material_ui.xml" value="0.35104166666666664" />
+        <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/componentes/src/main/res/layout/view_edittext_legenda_ui.xml" value="0.25" />
+        <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/componentes/src/main/res/layout/view_question_button_view_ui.xml" value="0.35104166666666664" />
+        <entry key="..\:/SiacDev - migracao/AndroidUi_2/Componentes/componentes/src/main/res/layout/view_textview_legenda_ui.xml" value="0.35104166666666664" />
       </map>
     </option>
   </component>

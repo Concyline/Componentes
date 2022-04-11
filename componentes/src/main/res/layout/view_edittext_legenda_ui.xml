@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:padding="10dp"
-        android:tint="@color/colorAccent"
+        app:tint="@color/colorAccent"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="@+id/editText"
