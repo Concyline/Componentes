@@ -226,7 +226,7 @@ public class EditTextTitle extends FrameLayout {
         }
     }
 
-    private void setRequerido() {
+    public void setRequerido() {
         requiredImageView.setVisibility(View.VISIBLE);
         requiredImageView.setOnClickListener(new OnClickListener() {
             @Override
@@ -289,6 +289,13 @@ public class EditTextTitle extends FrameLayout {
         }
 
         return false;
+    }
+
+    public void setError(String legenda) {
+        this.legendaRequerido = legenda;
+        setRequerido();
+        requiredImageView.setColorFilter(Color.RED);
+        shake(getContext(), requiredImageView);
     }
 
     public void setError() {

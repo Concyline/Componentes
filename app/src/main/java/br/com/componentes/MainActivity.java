@@ -24,6 +24,17 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
         setContentView(R.layout.activity_main);
 
 
+
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditTextTitle editTextTitle = findViewById(R.id.editTextTitle);
+
+                editTextTitle.setError("fudeu mano");
+            }
+        });
+
+
     }
 
     private List<Cidade> generateData() {
