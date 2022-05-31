@@ -44,4 +44,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
 
+    <br.com.componentes.EditTextTitle
+        android:id="@+id/senhaEditTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:colorTitle="@color/colorAccent"
+        app:enabled="true"
+        app:focusable="true"
+        app:iconRigth="@drawable/round_visibility_black_48dp"
+        app:iconLeft="@drawable/round_visibility_black_48dp"
+        app:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:requerido="false"
+        app:tag="edittext"
+        app:title="Senha" />
+
+    <br.com.componentes.EditTextTitle
+        android:id="@+id/senhaEditTextTitleafdsfsdf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:coricon="@color/colorAccent"
+        app:iconRigth="@drawable/round_visibility_black_48dp"
+        app:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/senhaEditTextTitle"
+        app:tamTitle="@dimen/tamLegendaEditTextUi"
+        app:title="Senha" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

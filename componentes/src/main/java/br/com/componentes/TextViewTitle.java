@@ -139,4 +139,12 @@ public class TextViewTitle extends FrameLayout {
         descricaoTextView.setTypeface(face);
     }
 
+    public void setTextColor(int color){
+        descricaoTextView.setTextColor(color);
+    }
+
+    public void setTextColor(ColorStateList colors){
+        descricaoTextView.setTextColor(colors);
+    }
+
 }

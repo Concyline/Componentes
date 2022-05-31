@@ -24,13 +24,20 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
         setContentView(R.layout.activity_main);
 
 
-
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditTextTitle editTextTitle = findViewById(R.id.editTextTitle);
 
                 editTextTitle.setError("fudeu mano");
+            }
+        });
+
+        EditTextTitle senhaEditTextTitleafdsfsdf = findViewById(R.id.senhaEditTextTitleafdsfsdf);
+        senhaEditTextTitleafdsfsdf.setOnClickListenerIconRigth(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                senhaEditTextTitleafdsfsdf.mostraSenha();
             }
         });
 
@@ -125,8 +132,8 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
 
             final Cidade item = getItem(position);
 
-            ((TextView)holder.getViewById(getResIdOfInflatedViews()[0])).setText(item.getNome());
-            ((TextView)holder.getViewById(getResIdOfInflatedViews()[1])).setText(item.getUf());
+            ((TextView) holder.getViewById(getResIdOfInflatedViews()[0])).setText(item.getNome());
+            ((TextView) holder.getViewById(getResIdOfInflatedViews()[1])).setText(item.getUf());
 
         }
     }
