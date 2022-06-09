@@ -2,8 +2,10 @@ package br.com.componentes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +20,16 @@ import br.com.componentes.baseadaper.OnViewHolderClickListener;
 
 public class MainActivity extends AppCompatActivity implements OnViewHolderClickListener {
 
+    private RecyclerView recyclerView;
+    private CustomAdapter customAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditTextTitle editTextTitle = findViewById(R.id.editTextTitle);
@@ -39,7 +44,17 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
             public void onClick(View view) {
                 senhaEditTextTitleafdsfsdf.mostraSenha();
             }
-        });
+        });*/
+
+
+        recyclerView = findViewById(R.id.recyclerView);
+
+        recyclerView.setLayoutManager(BaseAdapter.getGridLayoutManager(this));
+        recyclerView.addItemDecoration(BaseAdapter.getDividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        //recyclerView.addItemDecoration(BaseAdapter.getDividerItemDecoration(this, LinearLayoutManager.HORIZONTAL));
+
+        customAdapter = new CustomAdapter(generateData(), this);
+        recyclerView.setAdapter(customAdapter);
 
 
     }
@@ -52,63 +67,21 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
         return data;
     }
 
+
+    int positionOfItem = -1;
+
     @Override
     public void onClickListener(int positionOfItem) {
         System.out.println("onClickListener");
+
+        this.positionOfItem = positionOfItem;
+        customAdapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void onLongClickListener(int position) {
         System.out.println("onLongClickListener");
-    }
-
-    public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-        private LayoutInflater mInflater;
-        private List<Cidade> lCidade;
-
-        Adapter(List<Cidade> lCidade) {
-            this.mInflater = LayoutInflater.from(getBaseContext());
-            this.lCidade = lCidade;
-        }
-
-        @Override
-        @NonNull
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = mInflater.inflate(R.layout.cidade_item, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-            final ViewHolder viewHolder = (ViewHolder) holder;
-
-            Cidade cidade = lCidade.get(position);
-
-            viewHolder.nomeTextView.setText(cidade.getNome());
-            viewHolder.ufTextView.setText(cidade.getUf());
-        }
-
-        @Override
-        public int getItemCount() {
-            return lCidade.size();
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView nomeTextView;
-            TextView ufTextView;
-
-            ViewHolder(View itemView) {
-                super(itemView);
-                nomeTextView = itemView.findViewById(R.id.nomeTextView);
-                ufTextView = itemView.findViewById(R.id.ufTextView);
-            }
-        }
-
-        Cidade getItem(int id) {
-            return lCidade.get(id);
-        }
     }
 
     public class CustomAdapter extends BaseAdapter<Cidade> {
@@ -123,18 +96,18 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
         }
 
         @Override
-        protected int[] getResIdOfInflatedViews() {
-            return new int[]{R.id.nomeTextView, R.id.ufTextView};
-        }
-
-        @Override
         public void onBindViewHolder(ClickableViewHolder holder, int position) {
 
             final Cidade item = getItem(position);
 
-            ((TextView) holder.getViewById(getResIdOfInflatedViews()[0])).setText(item.getNome());
-            ((TextView) holder.getViewById(getResIdOfInflatedViews()[1])).setText(item.getUf());
+            ((TextView) holder.getViewById(R.id.nomeTextView)).setText(item.getNome());
+            ((TextView) holder.getViewById(R.id.ufTextView)).setText(item.getUf());
+
+            holder.itemView.setBackgroundColor(positionOfItem == position
+                    ? Color.parseColor("#CCCCCC")
+                    : Color.parseColor("#FFFFFF"));
 
         }
+
     }
 }
