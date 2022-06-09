@@ -46,7 +46,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Cl
         this.mItemClickListener = itemClickListener;
     }
 
-    protected final T getItem(int position) {
+    public final T getItem(int position) {
         return this.mData.get(position);
     }
 

@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
         this.positionOfItem = positionOfItem;
         customAdapter.notifyDataSetChanged();
 
+        Cidade item = ((CustomAdapter) recyclerView.getAdapter()).getItem(positionOfItem);
+
+        System.out.println("");
+
     }
 
     @Override
