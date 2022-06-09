@@ -21,6 +21,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.common.util.ArrayUtils;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.componentes.R;
@@ -56,42 +59,52 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Cl
     public final ClickableViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(getItemView(), parent, false);
 
-        if(view instanceof ConstraintLayout){
-            ConstraintLayout constraintLayout = (ConstraintLayout) view;
-
-            ids = new int[constraintLayout.getChildCount()];
-
-            for (int i = 0; i < ids.length; i++) {
-                ids[i] = constraintLayout.getChildAt(i).getId();
-            }
-
-        }else if(view instanceof LinearLayout){
-            LinearLayout linearLayout = (LinearLayout) view;
-
-            ids = new int[linearLayout.getChildCount()];
-
-            for (int i = 0; i < ids.length; i++) {
-                ids[i] = linearLayout.getChildAt(i).getId();
-            }
-
-        }else if(view instanceof RelativeLayout){
-            RelativeLayout relativeLayout = (RelativeLayout) view;
-
-            ids = new int[relativeLayout.getChildCount()];
-
-            for (int i = 0; i < ids.length; i++) {
-                ids[i] = relativeLayout.getChildAt(i).getId();
-            }
-
+        if(ids == null) {
+            ids = getAllChildren(view);
         }
 
         return new ClickableViewHolder(view, mItemClickListener, ids);
     }
 
+
+    private int[] getAllChildren(View v) {
+
+        List<Integer> visited = new ArrayList<>();
+        List<View> unvisited = new ArrayList<>();
+        unvisited.add(v);
+
+        while (!unvisited.isEmpty()) {
+
+            View child = unvisited.remove(0);
+            if (child.getId() != -1) {
+                visited.add(child.getId());
+            }
+
+            if (!(child instanceof ViewGroup)) {
+                continue;
+            }
+
+            ViewGroup group = (ViewGroup) child;
+            final int childCount = group.getChildCount();
+
+            for (int i = 0; i < childCount; i++) {
+                unvisited.add(group.getChildAt(i));
+            }
+        }
+
+        int[] ids = new int[visited.size()];
+
+        for (int i = 0; i < visited.size(); i++) {
+            ids[i] = visited.get(i);
+        }
+
+        return ids;
+    }
+
     public static class ClickableViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         boolean longClick = false;
-        private final OnViewHolderClickListener mItemClickListener; 
+        private final OnViewHolderClickListener mItemClickListener;
 
         private SparseArray<View> mInflatedViewsMap;
 
@@ -154,7 +167,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.Cl
         return getGridLayoutManager(appCompatActivity, 1);
     }
 
-    public static GridLayoutManager getGridLayoutManager(AppCompatActivity appCompatActivity, @Nullable  int coluns) {
+    public static GridLayoutManager getGridLayoutManager(AppCompatActivity appCompatActivity, @Nullable int coluns) {
         return new GridLayoutManager(appCompatActivity, coluns);
     }
 

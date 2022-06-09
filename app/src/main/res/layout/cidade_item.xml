@@ -7,15 +7,22 @@
     android:padding="10dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/nomeTextView"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="nome"
-        app:layout_constraintWidth_percent="0.8"
         app:layout_constraintEnd_toStartOf="@+id/ufTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8">
+
+        <TextView
+            android:id="@+id/nomeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nome" />
+    </LinearLayout>
+
+
 
     <TextView
         android:id="@+id/ufTextView"
@@ -24,7 +31,6 @@
         android:text="uf"
         app:layout_constraintWidth_percent="0.2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/nomeTextView"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
