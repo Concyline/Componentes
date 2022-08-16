@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EditTextTitleAutoComplete editTextTitleAutoComplete = findViewById(R.id.editTextTitleAutoComplete);
+        editTextTitleAutoComplete.setAdapter(new String[]{"goiania","goianesia","guarapari","guarulhos"});
+
 
         /*findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
