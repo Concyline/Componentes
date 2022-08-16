@@ -124,7 +124,7 @@ public class EditTextTitle extends FrameLayout {
 
     }
 
-    private String getString(TypedArray typedArray, int index, String defaultValue){
+    private String getString(TypedArray typedArray, int index, String defaultValue) {
         String value = typedArray.getString(index);
         return value == null ? defaultValue : value;
     }
@@ -163,7 +163,7 @@ public class EditTextTitle extends FrameLayout {
 
     private void setup() {
         legendaTextView.setText(title);
-        if(colorTitle != null) {
+        if (colorTitle != null) {
             legendaTextView.setTextColor(colorTitle);
         }
         legendaTextView.setTextSize(tamTitle);
@@ -191,7 +191,7 @@ public class EditTextTitle extends FrameLayout {
 
         setIcon();
         setInputType(editText, inputType, lines);
-        if(inputType == 0x00000081){
+        if (inputType == 0x00000081) {
             setListnerSenha();
         }
 
@@ -200,14 +200,14 @@ public class EditTextTitle extends FrameLayout {
         }
     }
 
-    public void removeTextChangedListener(TextWatcher textWatcher){
-        if(editText != null) {
+    public void removeTextChangedListener(TextWatcher textWatcher) {
+        if (editText != null) {
             editText.removeTextChangedListener(textWatcher);
         }
     }
 
-    public void addTextChangedListener(TextWatcher textWatcher){
-        if(editText != null) {
+    public void addTextChangedListener(TextWatcher textWatcher) {
+        if (editText != null) {
             editText.addTextChangedListener(textWatcher);
         }
     }
@@ -237,10 +237,10 @@ public class EditTextTitle extends FrameLayout {
         });
     }
 
-    public void setIconRigthVisible(boolean visible){
-        if(visible){
+    public void setIconRigthVisible(boolean visible) {
+        if (visible) {
             iconRigthImageView.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             iconRigthImageView.setVisibility(View.GONE);
         }
     }
@@ -266,6 +266,32 @@ public class EditTextTitle extends FrameLayout {
     }
 
     public boolean validaPreenchido() {
+
+        contaCaracteres("22/10/1983");
+
+        if (!requerido) {
+            return true;
+        }
+
+        if (mascara != null) {
+
+            if(retiraCaracteres(editText.getText().toString()).length() == 0 ){
+                setError();
+                return false;
+            }
+
+        }
+
+        if ( editText.getText().toString().length() == 0) {
+            setError();
+            return false;
+        }
+
+        return true;
+
+    }
+
+    /*public boolean validaPreenchido() {
         if (requerido) {
             if (mascara != null) {
                 return retiraCaracteres(editText.getText().toString()).length() > 0 ? true : false;
@@ -274,10 +300,14 @@ public class EditTextTitle extends FrameLayout {
             }
         }
         return true;
-    }
+    }*/
 
     private String retiraCaracteres(String current) {
         return current.replaceAll("[^0-9]*", "");
+    }
+
+    private int contaCaracteres(String current) {
+        return current.replaceAll("[^0-9.()/-]*", "").length();
     }
 
     public boolean validaCpfCnpj() {
@@ -308,13 +338,14 @@ public class EditTextTitle extends FrameLayout {
     }
 
     boolean controle = true;
-    public void mostraSenha(){
-        if(controle) {
+
+    public void mostraSenha() {
+        if (controle) {
             controle = false;
             setInputType(editText, 0x00000000, lines);
 
             iconRigth = getResources().getDrawable(R.drawable.round_visibility_off_black_48dp);
-        }else {
+        } else {
             controle = true;
             setInputType(editText, 0x00000081, lines);
 
@@ -324,11 +355,11 @@ public class EditTextTitle extends FrameLayout {
         editText.setSelection(editText.getText().length());
     }
 
-    public void setSelection(int index){
+    public void setSelection(int index) {
         editText.setSelection(index);
     }
 
-    private void setListnerSenha(){
+    private void setListnerSenha() {
         iconRigthImageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -350,19 +381,19 @@ public class EditTextTitle extends FrameLayout {
         iconRigthImageView.setOnClickListener(onClickListener);
     }
 
-    public Date getDate(){
-        if(dateResult != null){
+    public Date getDate() {
+        if (dateResult != null) {
             return dateResult;
         }
         return null;
     }
 
-    public void setDate(Date date){
+    public void setDate(Date date) {
         dateResult = date;
         editText.setText(Util.dateToStr(dateResult));
     }
 
-    public void setDateHour(Date date){
+    public void setDateHour(Date date) {
         dateResult = date;
         editText.setText(Util.dateHora(dateResult));
     }
@@ -440,7 +471,7 @@ public class EditTextTitle extends FrameLayout {
         }
     }
 
-    public void setFilters(InputFilter[] filters){
+    public void setFilters(InputFilter[] filters) {
         editText.setFilters(filters);
     }
 

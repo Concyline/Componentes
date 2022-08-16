@@ -72,6 +72,25 @@
         app:tamTitle="@dimen/tamLegendaEditTextUi"
         app:title="Senha" />-->
 
+    <br.com.componentes.EditTextTitle
+        android:id="@+id/editTextTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:enabled="true"
+        app:focusable="true"
+        app:mascara="  .   -   "
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:legendaRequerido="Digite um email válido!"
+        app:requerido="true"
+        app:requestfocus="false"
+        app:tag="edittext"
+        app:text="texto"
+        app:title="Enail">
+
+    </br.com.componentes.EditTextTitle>
+
     <br.com.componentes.EditTextTitleAutoComplete
         android:id="@+id/editTextTitleAutoComplete"
         android:layout_width="match_parent"
@@ -80,8 +99,9 @@
         app:iconRigth="@drawable/round_search_black_48dp"
         app:inputType="textCapCharacters"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitle"
         app:tamTitle="@dimen/tamLegendaEditTextUi"
         app:title="Cidade" />
 
@@ -93,6 +113,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitleAutoComplete" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextTitle"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,15 +29,22 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditTextTitleAutoComplete editTextTitleAutoComplete = findViewById(R.id.editTextTitleAutoComplete);
-        editTextTitleAutoComplete.setAdapter(new String[]{"goiania","goianesia","guarapari","guarulhos"});
 
-        editTextTitleAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        EditTextTitle editTextTitle = findViewById(R.id.editTextTitle);
+
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println(" "+editTextTitleAutoComplete.getAdapter().getItem(position));
-
+            public void onClick(View v) {
+                System.out.println(""+editTextTitle.validaPreenchido());
             }
+        });
+
+
+        EditTextTitleAutoComplete editTextTitleAutoComplete = findViewById(R.id.editTextTitleAutoComplete);
+        editTextTitleAutoComplete.setAdapter(new String[]{"goiania", "goianesia", "guarapari", "guarulhos"});
+
+        editTextTitleAutoComplete.setOnItemClickListener((parent, view, position, id) -> {
+            System.out.println(" " + editTextTitleAutoComplete.getAdapter().getItem(position));
         });
 
 
