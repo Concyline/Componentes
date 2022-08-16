@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,6 +31,14 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
 
         EditTextTitleAutoComplete editTextTitleAutoComplete = findViewById(R.id.editTextTitleAutoComplete);
         editTextTitleAutoComplete.setAdapter(new String[]{"goiania","goianesia","guarapari","guarulhos"});
+
+        editTextTitleAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println(" "+editTextTitleAutoComplete.getAdapter().getItem(position));
+
+            }
+        });
 
 
         /*findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {

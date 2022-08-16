@@ -22,10 +22,12 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -352,12 +354,20 @@ public class EditTextTitleAutoComplete extends FrameLayout {
         autoCompleteTextView.setOnClickListener(onClickListener);
     }
 
+    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
+        autoCompleteTextView.setOnItemClickListener(onItemClickListener);
+    }
+
     public void setOnClickListenerIconLeft(OnClickListener onClickListener) {
         iconLeftImageView.setOnClickListener(onClickListener);
     }
 
     public void setOnClickListenerIconRigth(OnClickListener onClickListener) {
         iconRigthImageView.setOnClickListener(onClickListener);
+    }
+
+    public ListAdapter getAdapter(){
+       return autoCompleteTextView.getAdapter();
     }
 
     public Date getDate(){
