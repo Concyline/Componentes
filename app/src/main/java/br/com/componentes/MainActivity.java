@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements OnViewHolderClick
 
 
         EditTextTitle editTextTitle = findViewById(R.id.editTextTitle);
-        editTextTitle.setTextT("aqui");
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -46,7 +46,7 @@ public class EditTextTitle extends FrameLayout {
 
     // COMPONENTES
     private TextView legendaTextView;
-    private AppCompatEditText editText;
+    private EditText editText;
     private ImageView iconLeftImageView, iconRigthImageView, requiredImageView;
 
     // ATRIBUTOS
@@ -268,8 +268,6 @@ public class EditTextTitle extends FrameLayout {
 
     public boolean validaPreenchido() {
 
-        contaCaracteres("22/10/1983");
-
         if (!requerido) {
             return true;
         }
@@ -292,23 +290,8 @@ public class EditTextTitle extends FrameLayout {
 
     }
 
-    /*public boolean validaPreenchido() {
-        if (requerido) {
-            if (mascara != null) {
-                return retiraCaracteres(editText.getText().toString()).length() > 0 ? true : false;
-            } else {
-                return editText.getText().toString().length() > 0 ? true : false;
-            }
-        }
-        return true;
-    }*/
-
     private String retiraCaracteres(String current) {
         return current.replaceAll("[^0-9]*", "");
-    }
-
-    private int contaCaracteres(String current) {
-        return current.replaceAll("[^0-9.()/-]*", "").length();
     }
 
     public boolean validaCpfCnpj() {
@@ -438,17 +421,6 @@ public class EditTextTitle extends FrameLayout {
 
     public void setText(String text) {
         editText.setText(text);
-    }
-
-    public void setTextT(String text) {
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                editText.setText(text);
-            }
-        }).start();
-
     }
 
     public void setLegenda(String text) {
