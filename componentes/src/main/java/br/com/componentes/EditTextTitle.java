@@ -275,14 +275,14 @@ public class EditTextTitle extends FrameLayout {
 
         if (mascara != null) {
 
-            if(retiraCaracteres(editText.getText().toString()).length() == 0 ){
+            if (retiraCaracteres(editText.getText().toString()).length() == 0) {
                 setError();
                 return false;
             }
 
         }
 
-        if ( editText.getText().toString().length() == 0) {
+        if (editText.getText().toString().length() == 0) {
             setError();
             return false;
         }
@@ -437,6 +437,17 @@ public class EditTextTitle extends FrameLayout {
 
     public void setText(String text) {
         editText.setText(text);
+    }
+
+    public void setTextT(String text) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                editText.setText(text);
+            }
+        }).start();
+
     }
 
     public void setLegenda(String text) {
