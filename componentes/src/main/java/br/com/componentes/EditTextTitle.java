@@ -30,6 +30,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import java.text.Normalizer;
 import java.util.Calendar;
@@ -45,7 +46,7 @@ public class EditTextTitle extends FrameLayout {
 
     // COMPONENTES
     private TextView legendaTextView;
-    private EditText editText;
+    private AppCompatEditText editText;
     private ImageView iconLeftImageView, iconRigthImageView, requiredImageView;
 
     // ATRIBUTOS
