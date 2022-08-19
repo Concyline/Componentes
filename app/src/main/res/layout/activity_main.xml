@@ -78,6 +78,7 @@
         android:layout_height="wrap_content"
         app:enabled="true"
         app:focusable="true"
+        app:colorText="#FF00"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

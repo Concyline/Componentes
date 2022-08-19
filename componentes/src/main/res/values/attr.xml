@@ -4,6 +4,7 @@
     <attr name="tamTitleEditText" format="dimension" />
     <attr name="title" format="string" />
     <attr name="colorTitle" format="color" />
+    <attr name="colorText" format="color" />
     <attr name="tamTitle" format="dimension" />
     <attr name="tamTextEditText" format="dimension" />
     <attr name="mascara" format="string" />
@@ -49,6 +50,7 @@
         <attr name="title"/>
         <attr name="tamTitle"/>
         <attr name="colorTitle" />
+        <attr name="colorText" />
         <attr name="tamTitleEditText"/>
         <attr name="tamTextEditText" />
         <attr name="hint" />

@@ -54,6 +54,7 @@ public class EditTextTitle extends FrameLayout {
     private String hint = "";
     private String text = "";
     private ColorStateList colorTitle;
+    private ColorStateList colorText;
     private float tamTitle = 13;
     private float tamTextEditText = 16;
     private int inputType = 0;
@@ -99,6 +100,7 @@ public class EditTextTitle extends FrameLayout {
             TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.EditTextLegenda, defStyleAttr, 0);
             title = typedArray.getString(R.styleable.EditTextLegenda_title);
             colorTitle = typedArray.getColorStateList(R.styleable.EditTextLegenda_colorTitle);
+            colorText = typedArray.getColorStateList(R.styleable.EditTextLegenda_colorText);
             tamTitle = getSizeFontLegendaEditText(typedArray.getString(R.styleable.EditTextLegenda_tamTitle));
             tamTextEditText = getSizeFontTextEditText(typedArray.getString(R.styleable.EditTextLegenda_tamTextEditText));
 
@@ -167,6 +169,7 @@ public class EditTextTitle extends FrameLayout {
         if (colorTitle != null) {
             legendaTextView.setTextColor(colorTitle);
         }
+
         legendaTextView.setTextSize(tamTitle);
 
         editText.setHint(hint);
@@ -175,6 +178,10 @@ public class EditTextTitle extends FrameLayout {
         editText.setFocusable(focusable);
         editText.setTextSize(tamTextEditText);
         editText.setTag(tag);
+
+        if(colorText != null){
+            editText.setTextColor(colorText);
+        }
 
         if (maxLength > 0) {
             editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
