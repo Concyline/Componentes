@@ -4,73 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:layout_margin="10dp"
     tools:context=".MainActivity">
 
+    <!--    <br.com.componentes.TextViewTitle
+           android:id="@+id/textViewTitle"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           app:colorTitle="@color/colorAccent"
+           app:corDescricao="@color/black"
+           app:descricao="Goiânia  adsdasdadsdasdsasfsfsdfsfdsfdasdsadsads"
+           app:gravity="left"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:singleLine="false"
+           app:title="Cidade" />
 
-<!--    <br.com.componentes.TextViewTitle
-        android:id="@+id/textViewTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:colorTitle="@color/colorAccent"
-        app:corDescricao="@color/black"
-        app:descricao="Goiânia  adsdasdadsdasdsasfsfsdfsfdsfdasdsadsads"
-        app:gravity="left"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:singleLine="false"
-        app:title="Cidade" />
+       <br.com.componentes.EditTextTitle
+           android:id="@+id/editTextTitle"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:colorTitle="@color/colorAccent"
+           app:enabled="true"
+           app:focusable="true"
+           app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+           app:requestfocus="true"
+           app:tag="edittext"
+           app:text="texto"
+           app:title="Componente simples"
+           tools:layout_editor_absoluteX="0dp" />
 
-    <br.com.componentes.EditTextTitle
-        android:id="@+id/editTextTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:colorTitle="@color/colorAccent"
-        app:enabled="true"
-        app:focusable="true"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
-        app:requestfocus="true"
-        app:tag="edittext"
-        app:text="texto"
-        app:title="Componente simples"
-        tools:layout_editor_absoluteX="0dp" />
+       <Button
+           android:id="@+id/button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Button"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
+       <br.com.componentes.EditTextTitle
+           android:id="@+id/senhaEditTextTitle"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:colorTitle="@color/colorAccent"
+           app:enabled="true"
+           app:focusable="true"
+           app:iconRigth="@drawable/round_visibility_black_48dp"
+           app:iconLeft="@drawable/round_visibility_black_48dp"
+           app:inputType="textPassword"
+           app:layout_constraintTop_toBottomOf="@+id/button"
+           app:requerido="false"
+           app:tag="edittext"
+           app:title="Senha" />
 
-    <br.com.componentes.EditTextTitle
-        android:id="@+id/senhaEditTextTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:colorTitle="@color/colorAccent"
-        app:enabled="true"
-        app:focusable="true"
-        app:iconRigth="@drawable/round_visibility_black_48dp"
-        app:iconLeft="@drawable/round_visibility_black_48dp"
-        app:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:requerido="false"
-        app:tag="edittext"
-        app:title="Senha" />
-
-    <br.com.componentes.EditTextTitle
-        android:id="@+id/senhaEditTextTitleafdsfsdf"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:coricon="@color/colorAccent"
-        app:iconRigth="@drawable/round_visibility_black_48dp"
-        app:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/senhaEditTextTitle"
-        app:tamTitle="@dimen/tamLegendaEditTextUi"
-        app:title="Senha" />-->
+       <br.com.componentes.EditTextTitle
+           android:id="@+id/senhaEditTextTitleafdsfsdf"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           app:coricon="@color/colorAccent"
+           app:iconRigth="@drawable/round_visibility_black_48dp"
+           app:inputType="textPassword"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/senhaEditTextTitle"
+           app:tamTitle="@dimen/tamLegendaEditTextUi"
+           app:title="Senha" />-->
 
     <br.com.componentes.EditTextTitle
         android:id="@+id/editTextTitle"
@@ -87,7 +87,8 @@
         app:requestfocus="false"
         app:tag="edittext"
         app:text="texto"
-        app:title="Enail">
+        app:title="Enail"
+        tools:ignore="MissingClass">
 
     </br.com.componentes.EditTextTitle>
 
@@ -114,6 +115,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitleAutoComplete" />
 
+
+    <!-- Is free to create any mask just edit the app:mascara="" -->
+
+    <br.com.componentes.EditTextTitle
+        android:id="@+id/editTextTitleSasasA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:colorText="#FF00"
+        app:enabled="true"
+        app:focusable="true"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:mascara="  .   .   /    -  "
+        app:requerido="true"
+        app:requestfocus="false"
+        app:tag="edittext"
+        app:text="texto"
+        app:title="Mascara" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -125,5 +144,5 @@
         app:layout_constraintStart_toEndOf="@+id/editTextTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
