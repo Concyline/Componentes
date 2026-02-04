@@ -16,9 +16,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Parcelable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -162,6 +164,16 @@ public class EditTextTitle extends FrameLayout {
         iconRigthImageView = findViewById(R.id.iconRigthImageView);
         requiredImageView = findViewById(R.id.requiredImageView);
         setup();
+    }
+
+    @Override
+    protected void dispatchSaveInstanceState(@NonNull SparseArray<Parcelable> container) {
+        dispatchFreezeSelfOnly(container);
+    }
+
+    @Override
+    protected void dispatchRestoreInstanceState(@NonNull SparseArray<Parcelable> container) {
+        dispatchThawSelfOnly(container);
     }
 
     private void setup() {
