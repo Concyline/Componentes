@@ -35,7 +35,6 @@
 
     <EditText
         android:id="@+id/editText"
-        android:saveEnabled="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_selector_ui"
