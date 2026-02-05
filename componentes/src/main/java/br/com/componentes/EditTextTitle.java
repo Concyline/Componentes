@@ -166,7 +166,7 @@ public class EditTextTitle extends FrameLayout {
         setup();
     }
 
-    @Override
+   /* @Override
     protected void dispatchSaveInstanceState(@NonNull SparseArray<Parcelable> container) {
         dispatchFreezeSelfOnly(container);
     }
@@ -174,7 +174,7 @@ public class EditTextTitle extends FrameLayout {
     @Override
     protected void dispatchRestoreInstanceState(@NonNull SparseArray<Parcelable> container) {
         dispatchThawSelfOnly(container);
-    }
+    }*/
 
     private void setup() {
         legendaTextView.setText(title);
