@@ -31,7 +31,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.Concyline'
             artifactId = 'Componentes'
-            version = '1.0.27'
+            version = '1.0.28'
             afterEvaluate {
                 artifact("$buildDir/outputs/aar/${project.name}-release.aar") {
                     builtBy tasks.named("bundleReleaseAar")
