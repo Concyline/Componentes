@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -36,10 +37,28 @@ public class CDialog {
     private int background = 0;
     private int duration = 3000; // DEFAULT
     private boolean progressVisible = false;
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private Runnable dismissRunnable;
+
+    private final Runnable progressRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (!dialog.isShowing() || !progressVisible || progressBar == null) {
+                return;
+            }
+
+            int nextProgress = Math.min(progressBar.getProgress() + 1, progressBar.getMax());
+            progressBar.setProgress(nextProgress);
+            if (nextProgress < progressBar.getMax()) {
+                mainHandler.postDelayed(this, 1000);
+            }
+        }
+    };
 
     public CDialog(Context context) {
         this.context = context;
         dialog = new Dialog(context);
+        dialog.setOnDismissListener(ignored -> cancelPendingCallbacks());
     }
 
     public CDialog createAlertSneckBar(String message, TypeDialog alertType, SizeDialog sizeDialog) {
@@ -424,58 +443,44 @@ public class CDialog {
     }
 
     public void show() {
-        dialog.show();
-
-        if (progressVisible) {
-            progressBar.setVisibility(View.VISIBLE);
-            progresSnakBar();
-        }
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dialog.dismiss();
-            }
-        }, duration);
+        showDialog(null);
     }
 
     public void show(final CDialogListener onDismissListener) {
+        showDialog(onDismissListener);
+    }
+
+    private void showDialog(final CDialogListener onDismissListener) {
+        cancelPendingCallbacks();
         dialog.show();
 
         if (progressVisible) {
             progressBar.setVisibility(View.VISIBLE);
-            progresSnakBar();
+            progressBar.setMax(Math.max(1, duration / 1000));
+            progressBar.setProgress(0);
+            mainHandler.postDelayed(progressRunnable, 1000);
         }
 
-        new Handler().postDelayed(new Runnable() {
+        dismissRunnable = new Runnable() {
             @Override
             public void run() {
-                dialog.dismiss();
-                onDismissListener.onDismiss();
-            }
-        }, duration);
-    }
-
-    int value = 0;
-
-    private void progresSnakBar() {
-        progressBar.setMax(duration / 1000);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    do {
-                        value++;
-                        progressBar.setProgress(value);
-                        Thread.sleep(1000);
-                    } while (value < progressBar.getMax());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                    if (onDismissListener != null) {
+                        onDismissListener.onDismiss();
+                    }
                 }
             }
-        }).start();
+        };
+        mainHandler.postDelayed(dismissRunnable, Math.max(0, duration));
+    }
 
+    private void cancelPendingCallbacks() {
+        mainHandler.removeCallbacks(progressRunnable);
+        if (dismissRunnable != null) {
+            mainHandler.removeCallbacks(dismissRunnable);
+            dismissRunnable = null;
+        }
     }
 
     public interface CDialogListener {

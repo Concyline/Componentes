@@ -1,165 +1,351 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:layout_margin="10dp"
-    android:padding="10dp"
+    android:fillViewport="true"
     tools:context=".MainActivity">
 
-    <!--    <br.com.componentes.TextViewTitle
-           android:id="@+id/textViewTitle"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           app:colorTitle="@color/colorAccent"
-           app:corDescricao="@color/black"
-           app:descricao="Goiânia  adsdasdadsdasdsasfsfsdfsfdsfdasdsadsads"
-           app:gravity="left"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:singleLine="false"
-           app:title="Cidade" />
-
-       <br.com.componentes.EditTextTitle
-           android:id="@+id/editTextTitle"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           app:colorTitle="@color/colorAccent"
-           app:enabled="true"
-           app:focusable="true"
-           app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
-           app:requestfocus="true"
-           app:tag="edittext"
-           app:text="texto"
-           app:title="Componente simples"
-           tools:layout_editor_absoluteX="0dp" />
-
-       <Button
-           android:id="@+id/button"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Button"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
-
-       <br.com.componentes.EditTextTitle
-           android:id="@+id/senhaEditTextTitle"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           app:colorTitle="@color/colorAccent"
-           app:enabled="true"
-           app:focusable="true"
-           app:iconRigth="@drawable/round_visibility_black_48dp"
-           app:iconLeft="@drawable/round_visibility_black_48dp"
-           app:inputType="textPassword"
-           app:layout_constraintTop_toBottomOf="@+id/button"
-           app:requerido="false"
-           app:tag="edittext"
-           app:title="Senha" />
-
-       <br.com.componentes.EditTextTitle
-           android:id="@+id/senhaEditTextTitleafdsfsdf"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           app:coricon="@color/colorAccent"
-           app:iconRigth="@drawable/round_visibility_black_48dp"
-           app:inputType="textPassword"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/senhaEditTextTitle"
-           app:tamTitle="@dimen/tamLegendaEditTextUi"
-           app:title="Senha" />-->
-
-    <br.com.componentes.EditTextTitle
-        android:id="@+id/editTextTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:enabled="true"
-        app:focusable="true"
-        app:colorText="#FF00"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:legendaRequerido="Digite um email válido!"
-        app:requerido="true"
-        app:requestfocus="false"
-        app:tag="edittext"
-        app:text="texto"
-        app:title="Enail"
-        tools:ignore="MissingClass">
-
-    </br.com.componentes.EditTextTitle>
-
-    <br.com.componentes.EditTextTitleAutoComplete
-        android:id="@+id/editTextTitleAutoComplete"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:coricon="@color/colorAccent"
-        app:iconRigth="@drawable/round_search_black_48dp"
-        app:inputType="textCapCharacters"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitle"
-        app:tamTitle="@dimen/tamLegendaEditTextUi"
-        app:title="Cidade" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitleAutoComplete" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_components_title"
+            android:textAppearance="?attr/textAppearanceHeadlineSmall" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="@string/demo_components_description"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
 
-    <!-- Is free to create any mask just edit the app:mascara="" -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/demo_text_components"
+            android:textAppearance="?attr/textAppearanceTitleMedium" />
 
-    <br.com.componentes.EditTextTitle
-        android:id="@+id/editTextTitleSasasA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:colorText="#FF00"
-        app:enabled="true"
-        app:focusable="true"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:mascara="  .   .   /    -  "
-        app:requerido="true"
-        app:requestfocus="false"
-        app:tag="edittext"
-        app:text="texto"
-        app:title="Mascara" />
+        <br.com.componentes.TextViewTitle
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:descricao="@string/demo_description_text"
+            app:title="@string/demo_text_title" />
 
-    <br.com.componentes.EditTextTitle
-        android:id="@+id/editTextTitleSasasAureo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:colorText="#FF00"
-        app:enabled="false"
-        app:focusable="true"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitleSasasA"
-        app:mascara="  .   .   /    -  "
-        app:requerido="true"
-        app:requestfocus="false"
-        app:tag="edittext"
-        app:text="texto"
-        app:title="Mascara"
-        tools:layout_editor_absoluteX="16dp" />
+        <br.com.componentes.EditTextTitle
+            android:id="@+id/editTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="@string/demo_email_hint"
+            app:legendaRequerido="@string/demo_required_email"
+            app:requerido="true"
+            app:title="@string/demo_email_title" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/buttonValidate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_validate_field" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <br.com.componentes.EditTextTitle
+            android:id="@+id/editTextMasked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            app:hint="@string/demo_cpf_hint"
+            app:mascara="  .   .   /    -  "
+            app:title="@string/demo_masked_field_title" />
 
+        <br.com.componentes.EditTextTitleAutoComplete
+            android:id="@+id/editTextTitleAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="@string/demo_city_hint"
+            app:iconRigth="@drawable/round_search_black_48dp"
+            app:title="@string/demo_autocomplete_title" />
+
+        <br.com.componentes.EditTexCurrency
+            android:id="@+id/editTexCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="@string/demo_currency_hint"
+            app:locale="pt_BR"
+            app:showSymbol="true"
+            app:title="@string/demo_currency_composite_title" />
+
+        <br.com.componentes.EditTextSearch
+            android:id="@+id/editTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="@string/demo_search_hint"
+            app:title="@string/demo_search_title" />
+
+        <br.com.componentes.EditTextCalendar
+            android:id="@+id/editTextCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hora="true"
+            app:title="@string/demo_calendar_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_currency_edit_text_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.currency.CurrencyEditText
+            android:id="@+id/currencyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edit_selector_ui"
+            android:hint="@string/demo_currency_hint"
+            android:inputType="numberDecimal"
+            android:textColor="@color/component_input_text"
+            android:textColorHint="@color/hint_text_color"
+            android:textSize="@dimen/tamDescricaoUi"
+            app:decimalPoints="2"
+            app:locale="pt_BR"
+            app:showSymbol="true" />
+
+        <br.com.componentes.SpinnerTitle
+            android:id="@+id/spinnerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:entries="@array/demo_component_options"
+            app:title="@string/demo_spinner_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_help_button_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.HelpButton
+            android:id="@+id/helpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:helpMsg="@string/demo_help_message" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/demo_progress_components"
+            android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+        <br.com.componentes.ProgressButton
+            android:id="@+id/progressButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:progressColor="@color/colorPrimary"
+            app:progressSize="24dp"
+            app:text="@string/demo_progress_button" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_progress_image_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.ProgressImageView
+            android:id="@+id/progressImageView"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            app:progressColor="@color/colorPrimary"
+            app:progressSize="32dp"
+            app:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_dot_loader_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.DotLoader
+            android:id="@+id/dotLoader"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:color_array="@array/demo_loader_colors"
+            app:dot_radius="6dp"
+            app:number_of_dots="3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_geometric_progress_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.GeometricProgressView
+            android:id="@+id/geometricProgressView"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            app:gp_color="@color/colorPrimary"
+            app:gp_duration="1500"
+            app:gp_figure_padding="4dp"
+            app:gp_number_of_angles="4"
+            app:gp_type="triangle" />
+
+        <Button
+            android:id="@+id/buttonProgressDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_show_progress_dialog" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/demo_image_components"
+            android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_image_custom_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.ImageViewCustom
+            android:id="@+id/imageViewCustom"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:contentDescription="@string/demo_long_press_image"
+            android:src="@mipmap/ic_launcher"
+            android:tag="@string/demo_image_tag" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_round_image_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.RoundImageView
+            android:id="@+id/roundImageView"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:contentDescription="@string/demo_round_image"
+            android:src="@mipmap/ic_launcher"
+            app:borderColor="@color/colorPrimary"
+            app:borderWidth="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_rounded_image_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.RoundishImageView
+            android:id="@+id/roundishImageView"
+            android:layout_width="120dp"
+            android:layout_height="88dp"
+            android:contentDescription="@string/demo_rounded_image"
+            android:src="@mipmap/ic_launcher"
+            app:cornerRadius="16dp"
+            app:roundedCorners="all" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_zoom_image_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.ZoomFrameImageView
+            android:id="@+id/zoomFrameImageView"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="@string/demo_zoom_image"
+            android:src="@mipmap/ic_launcher" />
+
+        <br.com.componentes.EspacoVago
+            android:id="@+id/espacoVago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:text="@string/demo_empty_space"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/demo_list_gesture_components"
+            android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_recycler_view_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.RecyclerViewButton
+            android:id="@+id/recyclerViewButton"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            app:basic="false"
+            app:numberOfColumns="1"
+            app:refresh="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_swipe_layout_caption"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+        <br.com.componentes.SwipeLayout
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:draggedItem="@id/swipeContent"
+            app:isEnabledSwipe="true"
+            app:rightItem="@id/swipeAction"
+            app:swipeDirection="left">
+
+            <TextView
+                android:id="@+id/swipeAction"
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
+                android:background="?attr/colorPrimary"
+                android:gravity="center"
+                android:text="@string/demo_swipe_action"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/swipeContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/colorBackground"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/demo_swipe_instruction" />
+        </br.com.componentes.SwipeLayout>
+
+        <Button
+            android:id="@+id/buttonCustomDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_show_custom_dialog" />
+
+        <Button
+            android:id="@+id/buttonAlertDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_show_alert" />
+
+        <Button
+            android:id="@+id/buttonKeyboardDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_show_keyboard" />
+    </LinearLayout>
+</ScrollView>

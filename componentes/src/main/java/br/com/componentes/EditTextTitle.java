@@ -64,6 +64,7 @@ public class EditTextTitle extends FrameLayout {
     private int lines = 1;
     private int maxLength = 0;
     private int coricon;
+    private boolean hasCoricon;
     private boolean enabled;
     private boolean focusable;
     private boolean requestfocus;
@@ -116,6 +117,7 @@ public class EditTextTitle extends FrameLayout {
             iconLeft = typedArray.getDrawable(R.styleable.EditTextLegenda_iconLeft);
             iconRigth = typedArray.getDrawable(R.styleable.EditTextLegenda_iconRigth);
             coricon = typedArray.getColor(R.styleable.EditTextLegenda_coricon, 0);
+            hasCoricon = typedArray.hasValue(R.styleable.EditTextLegenda_coricon);
 
             enabled = typedArray.getBoolean(R.styleable.EditTextLegenda_enabled, true);
             focusable = typedArray.getBoolean(R.styleable.EditTextLegenda_focusable, true);
@@ -235,13 +237,17 @@ public class EditTextTitle extends FrameLayout {
     private void setIcon() {
         if (iconLeft != null) {
             iconLeftImageView.setVisibility(View.VISIBLE);
-            iconLeftImageView.setColorFilter(new PorterDuffColorFilter(coricon, PorterDuff.Mode.SRC_IN));
+            if (hasCoricon) {
+                iconLeftImageView.setColorFilter(new PorterDuffColorFilter(coricon, PorterDuff.Mode.SRC_IN));
+            }
             iconLeftImageView.setImageDrawable(iconLeft);
         }
 
         if (iconRigth != null) {
             iconRigthImageView.setVisibility(View.VISIBLE);
-            iconRigthImageView.setColorFilter(new PorterDuffColorFilter(coricon, PorterDuff.Mode.SRC_IN));
+            if (hasCoricon) {
+                iconRigthImageView.setColorFilter(new PorterDuffColorFilter(coricon, PorterDuff.Mode.SRC_IN));
+            }
             iconRigthImageView.setImageDrawable(iconRigth);
         }
     }
@@ -327,17 +333,17 @@ public class EditTextTitle extends FrameLayout {
     public void setError(String legenda) {
         this.legendaRequerido = legenda;
         setRequerido();
-        requiredImageView.setColorFilter(Color.RED);
+        requiredImageView.setColorFilter(getResources().getColor(R.color.colorError));
         shake(getContext(), requiredImageView);
     }
 
     public void setError() {
-        requiredImageView.setColorFilter(Color.RED);
+        requiredImageView.setColorFilter(getResources().getColor(R.color.colorError));
         shake(getContext(), requiredImageView);
     }
 
     public void removeError() {
-        requiredImageView.setColorFilter(new PorterDuffColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN));
+        requiredImageView.clearColorFilter();
     }
 
     boolean controle = true;

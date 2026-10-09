@@ -264,12 +264,12 @@ public class EditTexCurrency extends FrameLayout {
     }
 
     public void setError() {
-        requiredImageView.setColorFilter(Color.RED);
+        requiredImageView.setColorFilter(getResources().getColor(R.color.colorError));
         shake(getContext(), requiredImageView);
     }
 
     public void removeError() {
-        requiredImageView.setColorFilter(new PorterDuffColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN));
+        requiredImageView.setColorFilter(new PorterDuffColorFilter(getResources().getColor(R.color.colorFocus), PorterDuff.Mode.SRC_IN));
     }
 
     boolean controle = true;

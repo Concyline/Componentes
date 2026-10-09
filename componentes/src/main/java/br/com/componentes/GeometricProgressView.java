@@ -4,7 +4,6 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.util.AttributeSet;
@@ -24,7 +23,6 @@ public class GeometricProgressView extends View {
     private static final int DEFAULT_SIZE = 64;
     private static final int DEFAULT_DURATION = 1500;
     private static final int DEFAULT_FIGURE_PADDING = 2;
-    private static final String DEFAULT_COLOR = "#00897b";
     private static final TYPE DEFAULT_TYPE = TYPE.KITE;
 
     private int color;
@@ -60,7 +58,7 @@ public class GeometricProgressView extends View {
             final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.GeometricProgressView);
             figurePadding = array.getDimensionPixelSize(R.styleable.GeometricProgressView_gp_figure_padding, DEFAULT_FIGURE_PADDING);
             numberOfAngles = array.getInteger(R.styleable.GeometricProgressView_gp_number_of_angles, DEFAULT_NUMBER_OF_ANGLES);
-            setColor(array.getColor(R.styleable.GeometricProgressView_gp_color, Color.parseColor(DEFAULT_COLOR)));
+            setColor(array.getColor(R.styleable.GeometricProgressView_gp_color, getResources().getColor(R.color.colorFocus)));
             duration = array.getInteger(R.styleable.GeometricProgressView_gp_duration, DEFAULT_DURATION);
             int typeInt = array.getInt(R.styleable.GeometricProgressView_gp_type, 0);
             switch (typeInt) {
@@ -75,7 +73,7 @@ public class GeometricProgressView extends View {
         } else {
             figurePadding = dpToPx(DEFAULT_FIGURE_PADDING);
             numberOfAngles = DEFAULT_NUMBER_OF_ANGLES;
-            setColor(Color.parseColor(DEFAULT_COLOR));
+            setColor(getResources().getColor(R.color.colorFocus));
             duration = DEFAULT_DURATION;
             type = DEFAULT_TYPE;
         }

@@ -4,6 +4,7 @@ package br.com.componentes;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -28,12 +29,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 public class RecyclerViewButton extends FrameLayout {
 
     private SwipeRefreshLayout swipeRefreshLayout;
-    private static RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private ImageView goToTopImageView;
     private RelativeLayout painelButtonRelativeLayout;
     private TextView notfoundTextView;
 
-    private static Context context;
     private int locationButton;
     private int numberOfColumns;
     private boolean horizontalDivider;
@@ -41,6 +41,8 @@ public class RecyclerViewButton extends FrameLayout {
     private boolean refresh;
     private boolean basic;
     private int listitem;
+    private boolean horizontalDividerAdded;
+    private boolean verticalDividerAdded;
     int dyMaster = 0;
 
     public RecyclerViewButton(@NonNull Context context) {
@@ -144,7 +146,7 @@ public class RecyclerViewButton extends FrameLayout {
             super.onScrollStateChanged(recyclerView, newState);
 
             if (newState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-                Animation in = AnimationUtils.loadAnimation(context, R.anim.fadeout_lento);
+                Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fadeout_lento);
                 goToTopImageView.startAnimation(in);
                 goToTopImageView.setVisibility(View.INVISIBLE);
 
@@ -157,8 +159,6 @@ public class RecyclerViewButton extends FrameLayout {
     RecyclerView.Adapter adapterRoot;
 
     public void setAdapter(final Activity context, @Nullable final RecyclerView.Adapter adapter) {
-        this.context = context;
-
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -166,17 +166,19 @@ public class RecyclerViewButton extends FrameLayout {
 
                 recyclerView.setLayoutManager(new GridLayoutManager(context, numberOfColumns));
 
-                if (horizontalDivider) {
+                if (horizontalDivider && !horizontalDividerAdded) {
                     recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL));
+                    horizontalDividerAdded = true;
                 }
 
-                if (verticalDivider) {
+                if (verticalDivider && !verticalDividerAdded) {
                     recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+                    verticalDividerAdded = true;
                 }
 
-                if(adapter.getItemCount() == 0){
+                if (adapter == null || adapter.getItemCount() == 0) {
                     notfoundTextView.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     notfoundTextView.setVisibility(View.INVISIBLE);
                 }
 
@@ -186,9 +188,18 @@ public class RecyclerViewButton extends FrameLayout {
     }
 
     public void notifyDataSetChanged(){
-        if(adapterRoot != null && adapterRoot.getItemCount() == 0){
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+            post(this::notifyDataSetChanged);
+            return;
+        }
+
+        if (adapterRoot != null) {
+            adapterRoot.notifyDataSetChanged();
+        }
+
+        if (adapterRoot == null || adapterRoot.getItemCount() == 0) {
             notfoundTextView.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             notfoundTextView.setVisibility(View.INVISIBLE);
         }
     }
@@ -209,14 +220,14 @@ public class RecyclerViewButton extends FrameLayout {
         swipeRefreshLayout.setRefreshing(refreshing);
 
         if(!refreshing) {
-            Animation in = AnimationUtils.loadAnimation(context, R.anim.fadeout_lento);
+            Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fadeout_lento);
             goToTopImageView.startAnimation(in);
             goToTopImageView.setVisibility(View.INVISIBLE);
         }
     }
 
     private void fadeIn(View button) {
-        Animation in = AnimationUtils.loadAnimation(context, android.R.anim.fade_in);
+        Animation in = AnimationUtils.loadAnimation(getContext(), android.R.anim.fade_in);
         button.startAnimation(in);
     }
 
@@ -227,10 +238,12 @@ public class RecyclerViewButton extends FrameLayout {
     public static class ItemClickListener implements RecyclerView.OnItemTouchListener {
 
         private Listener mListener;
-        GestureDetector mGestureDetector;
+        private GestureDetector mGestureDetector;
+        private RecyclerView gestureRecyclerView;
 
         @Override
         public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            ensureGestureDetector(rv);
             View childView = rv.findChildViewUnder(e.getX(), e.getY());
             if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
                 mListener.onItemClick(childView, rv.getChildAdapterPosition(childView));
@@ -251,7 +264,15 @@ public class RecyclerViewButton extends FrameLayout {
 
         public ItemClickListener(Listener listener) {
             mListener = listener;
-            mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+        }
+
+        private void ensureGestureDetector(RecyclerView recyclerView) {
+            if (gestureRecyclerView == recyclerView) {
+                return;
+            }
+
+            gestureRecyclerView = recyclerView;
+            mGestureDetector = new GestureDetector(recyclerView.getContext(), new GestureDetector.SimpleOnGestureListener() {
                 @Override
                 public boolean onSingleTapUp(MotionEvent e) {
                     return true;
@@ -259,13 +280,12 @@ public class RecyclerViewButton extends FrameLayout {
 
                 @Override
                 public void onLongPress(MotionEvent e) {
-                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                    View child = gestureRecyclerView.findChildViewUnder(e.getX(), e.getY());
                     if (child != null && mListener != null) {
-                        mListener.onLongItemClick(child, recyclerView.getChildAdapterPosition(child));
+                        mListener.onLongItemClick(child, gestureRecyclerView.getChildAdapterPosition(child));
                     }
                 }
             });
-
         }
     }
 
@@ -274,4 +294,3 @@ public class RecyclerViewButton extends FrameLayout {
         public void onLongItemClick(View view, int position);
     }
 }
-

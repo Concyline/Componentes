@@ -2,7 +2,7 @@
 
 > **Escopo:** orientações para os componentes reutilizáveis do módulo `:componentes` e para o aplicativo de demonstração `:app`.
 >
-> **Estado observado:** as interfaces são implementadas com views Android, layouts e recursos XML. O tema do aplicativo de demonstração herda de `Theme.Material3.DayNight.NoActionBar`; a biblioteca também declara recursos de cores, dimensões, estilos e variantes noturnas para alguns drawables. Isso não significa que todos os componentes já ofereçam suporte completo a temas ou acessibilidade.
+> **Estado observado:** as interfaces são implementadas com views Android, layouts e recursos XML. O app de demonstração usa `Theme.Material3.DayNight.NoActionBar`. A biblioteca fornece tokens semânticos de cor em `values/colors.xml` e `values-night/colors.xml` e usa esses tokens nas superfícies, textos, estados e diálogos cobertos. Isso não significa que todo conteúdo fornecido pelo consumidor ou toda combinação de tema tenha sido validada como acessível.
 >
 > **Decisões pendentes:** não há especificação de design aprovada, escala tipográfica, paleta oficial, política completa de temas ou matriz de dispositivos suportados identificada na documentação consultada. Não tratar exemplos de layouts ou valores existentes como tokens obrigatórios do produto.
 
@@ -37,7 +37,10 @@ Este guia orienta a implementação; não substitui requisitos funcionais, decis
 - Preserve o tema do aplicativo consumidor. A biblioteca não deve impor um tema global ao app que a integra.
 - Ao adicionar ou alterar estilos, cores e drawables, verifique os recursos existentes em `componentes/src/main/res/values/`, `values-night/`, `drawable/` e `drawable-night/`.
 - Se um recurso tiver variantes de tema, mantenha-as sincronizadas. Não presuma suporte completo ao modo noturno apenas pela existência de alguns recursos `-night`.
-- Prefira cores de recursos ou atributos de tema a valores hexadecimais embutidos. Antes de criar um novo token visual, verifique se existe um recurso equivalente e valide a necessidade com o responsável pelo design.
+- Use os tokens semânticos da biblioteca (`colorSurface`, `colorOnSurface`, `colorSurfaceVariant`, `colorOutline`, `colorFocus`, `colorDisabledSurface`, `colorDisabledContent`, `colorPrimary`, `colorOnPrimary` e `colorOnStatus`) para novas cores de interface; suas variantes claras e escuras ficam em `values/` e `values-night/`.
+- Preserve os nomes legados de recursos de cor usados por consumidores. Ao mudar uma cor existente ou introduzir um token, atualize ambas as paletas sem alterar atributos XML ou setters públicos.
+- Prefira recursos de cor ou atributos de tema a valores hexadecimais embutidos. Reserve valores fixos a cores cujo significado não varia com o tema, como a paleta intencional de um efeito multicolorido.
+- A biblioteca não impõe tema global ao app consumidor. Verifique também diálogos, popups, spinners e estados desabilitados; uma variante noturna de drawable não garante que os textos ou os componentes dinâmicos do consumidor acompanhem o tema.
 - Preserve contraste suficiente entre texto, ícones, estados e fundo. Não comunique erros, sucesso ou seleção somente por cor; use também texto, ícone ou outro sinal perceptível.
 - Preserve dimensões e estilos declarados como recursos compartilhados, inclusive variantes qualificadas por densidade ou modo noturno, quando o componente depender delas.
 
@@ -73,6 +76,30 @@ Antes de concluir uma alteração de interface:
 - Teste teclado, foco, rolagem, escala de fonte e estados de erro/carregamento aplicáveis ao componente.
 - Revise rótulos, contraste, tamanho dos alvos de toque e navegação por leitor de tela nos controles afetados.
 - Atualize a documentação do componente quando mudar seus atributos, uso, aparência relevante ou comportamento público.
+
+### Avaliação visual registrada em 2026-10-09
+
+A galeria `:app` foi inspecionada em emulador nos temas claro e escuro. Os campos de entrada, popups de validação, opções do `SpinnerTitle`, conteúdo do `CustomDialog` e teclado numérico mantiveram texto e controles legíveis nos dois temas. Esta verificação visual foi feita na configuração demonstrada pela galeria; não constitui validação de todos os tamanhos de tela, escalas de fonte ou layouts fornecidos por consumidores.
+
+Foram registrados dois pontos pendentes nessa avaliação:
+
+- **`HelpButton` / `HelpDialog`:** a ação “Ok” usava `colorPrimary`, que permanecia azul escuro no modo noturno. A implementação agora usa `colorFocus`, com variantes para os dois temas; o contraste da ação foi conferido em emulador no claro e no escuro.
+- **`CDialog`:** uma mensagem longa aparecia cortada no alerta circular de tamanho `MEDIUM` observado no emulador. A mensagem agora fica numa área rolável dentro do diálogo, mantendo o ícone e a barra de progresso; uma mensagem de teste longa foi rolada manualmente no alerta oval `MEDIUM` em tema claro. Ainda falta validar conteúdo extenso nos demais tamanhos/formatos e no tema escuro.
+
+### Melhorias subsequentes de ciclo de vida e acessibilidade
+
+- `ProgressIndeterminate` e a barra de progresso do `CDialog` agora atualizam views no thread principal e removem callbacks pendentes ao fechar.
+- `RecyclerViewButton` mantém a lista por instância, trata adapter nulo e faz `notifyDataSetChanged()` notificar o adapter antes de atualizar o estado vazio.
+- O botão de ajuda e o botão de retorno ao topo têm descrições acessíveis; os alvos de toque relevantes têm pelo menos 48dp. O estado vazio da lista é anunciado como região dinâmica.
+- O `HelpDialog` foi aberto no emulador nos dois temas; a ação ficou legível e o ícone recebeu descrição acessível. Uma mensagem longa no `CDialog` foi rolada no emulador e também está exposta como texto integral na hierarquia de acessibilidade. Ainda faltam testes em emulador para encerramento de animações/progresso e uso simultâneo de múltiplas listas.
+
+### Refinamento visual dos campos e superfícies
+
+- As dimensões tipográficas compartilhadas dos campos e labels foram alinhadas entre as variantes de densidade (`16sp` para conteúdo e `14sp` para labels); padding e cantos dos campos também foram uniformizados.
+- Campos e spinners passaram a usar superfícies e contornos semânticos, com bordas de foco mais evidentes. Labels, espaçamento e tipografia de descrições foram refinados, e diálogos passaram a ter contornos mais leves.
+- O campo habilitado no estado normal e sem foco mantém fundo branco no tema claro, como antes da modernização; o tema escuro continua usando sua superfície variante.
+- A seta sobreposta do `SpinnerTitle` usa a cor semântica de conteúdo da superfície para permanecer visível em temas claro e escuro.
+- A galeria foi conferida no emulador nos dois temas; os campos, seus labels e o spinner visíveis na tela inicial acompanharam as paletas. Essa conferência não cobre todos os componentes, escalas de fonte ou tamanhos de tela.
 
 ## 8. Pontos pendentes de definição
 

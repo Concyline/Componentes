@@ -37,11 +37,14 @@
 
         <ImageView
             android:id="@+id/goToTopImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/top"
+            android:contentDescription="@string/componentes_accessibility_scroll_top"
+            android:clickable="true"
             android:elevation="10dp"
+            android:focusable="true"
             android:visibility="invisible" />
 
     </RelativeLayout>
@@ -51,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:accessibilityLiveRegion="polite"
         android:visibility="invisible"
         android:text="Não foi encontrado resultados"
         app:layout_constraintEnd_toEndOf="parent"

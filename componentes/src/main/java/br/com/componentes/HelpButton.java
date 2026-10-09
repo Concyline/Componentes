@@ -6,10 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -69,6 +66,9 @@ public class HelpButton extends FrameLayout {
     private void init() {
         inflate(getContext(), R.layout.view_question_button_view_ui, this);
         imageView = findViewById(R.id.imageView);
+        imageView.setMinimumWidth(getResources().getDimensionPixelSize(R.dimen.accessibility_touch_target));
+        imageView.setMinimumHeight(getResources().getDimensionPixelSize(R.dimen.accessibility_touch_target));
+        imageView.setFocusable(true);
 
         setup();
     }
@@ -83,7 +83,7 @@ public class HelpButton extends FrameLayout {
 
     private void setup(){
 
-        imageView.setColorFilter(color != 0 ? color : R.color.cyan , PorterDuff.Mode.MULTIPLY);
+        imageView.setColorFilter(color != 0 ? color : getResources().getColor(R.color.colorOnSurfaceVariant), PorterDuff.Mode.MULTIPLY);
 
         imageView.setOnClickListener(new OnClickListener() {
             @Override
@@ -149,8 +149,8 @@ public class HelpButton extends FrameLayout {
             okTextView = dialog.findViewById(R.id.okTextView);
 
             toolbar.setTitle(toolbarTitle);
-            toolbar.setTitleTextColor(Color.WHITE);
-            toolbar.setSubtitleTextColor(Color.WHITE);
+            toolbar.setTitleTextColor(activity.getResources().getColor(R.color.colorOnPrimary));
+            toolbar.setSubtitleTextColor(activity.getResources().getColor(R.color.colorOnPrimary));
             toolbar.setNavigationIcon(R.drawable.outline_arrow_back_white_48dp);
 
             toolbar.setNavigationOnClickListener(new OnClickListener() {

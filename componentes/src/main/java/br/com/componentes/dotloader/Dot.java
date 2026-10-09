@@ -2,10 +2,10 @@ package br.com.componentes.dotloader;
 
 import android.animation.ValueAnimator;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 
 import br.com.componentes.DotLoader;
+import br.com.componentes.R;
 
 
 public class Dot {
@@ -28,7 +28,7 @@ public class Dot {
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(mColors[mCurrentColorIndex]);
-        mPaint.setShadowLayer(5.5f, 6.0f, 6.0f, Color.BLACK);
+        mPaint.setShadowLayer(5.5f, 6.0f, 6.0f, parent.getResources().getColor(R.color.colorShadow));
         mPaint.setStyle(Paint.Style.FILL);
     }
 

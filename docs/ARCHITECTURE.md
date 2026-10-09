@@ -46,7 +46,7 @@ Os recursos Android da biblioteca ficam em `componentes/src/main/res/`, incluind
 
 ### 2.2 Aplicativo `:app`
 
-O aplicativo tem `MainActivity` como atividade inicial e usa View Binding. Seu código e seus layouts estão em `app/src/main/`. A atividade demonstra componentes da biblioteca, incluindo campos de entrada e o adaptador de lista.
+O aplicativo tem `MainActivity` como atividade inicial e usa View Binding. Seu código e seus layouts estão em `app/src/main/`. A tela inicial funciona como catálogo executável dos componentes da biblioteca: apresenta views customizadas em sequência vertical, interações de diálogo/progresso e exemplos de lista e gesto.
 
 O aplicativo é uma superfície de demonstração; seu código não define, por si só, funcionalidades ou regras de negócio para a biblioteca.
 
@@ -95,7 +95,7 @@ As dependências de teste declaradas são JUnit 4, AndroidX Test JUnit e Espress
 
 Os componentes de UI são implementados em Java, incluindo subclasses de views Android e layouts compostos. Layouts XML e recursos da biblioteca ficam sob `componentes/src/main/res/`; o aplicativo de demonstração mantém seus próprios layouts e recursos sob `app/src/main/res/`.
 
-A biblioteca possui recursos alternativos para tema noturno em diretórios como `drawable-night` e `values-night`. Isso comprova a existência de recursos específicos para modo noturno, mas não define, por si só, uma política completa de temas ou de acessibilidade.
+A biblioteca organiza cores semânticas nas paletas `values/colors.xml` e `values-night/colors.xml`, aplicadas às superfícies, textos, campos, spinners, popups e diálogos que controla. Os recursos legados permanecem disponíveis para compatibilidade. A biblioteca não impõe um tema global ao app consumidor; componentes ou conteúdos fornecidos pela aplicação ainda devem ser verificados no tema integrado.
 
 Não foi identificada uma especificação de design aprovada com tokens, tipografia ou regras completas de experiência. Essas decisões permanecem pendentes de documentação e validação do responsável pelo projeto.
 

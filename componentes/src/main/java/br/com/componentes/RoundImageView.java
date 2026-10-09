@@ -38,7 +38,6 @@ public class RoundImageView extends ImageView {
     private static final int COLORDRAWABLE_DIMENSION = 2;
 
     private static final int DEFAULT_BORDER_WIDTH = 0;
-    private static final int DEFAULT_BORDER_COLOR = Color.BLACK;
     private static final int DEFAULT_CIRCLE_BACKGROUND_COLOR = Color.TRANSPARENT;
     private static final boolean DEFAULT_BORDER_OVERLAY = false;
 
@@ -50,7 +49,7 @@ public class RoundImageView extends ImageView {
     private final Paint mBorderPaint = new Paint();
     private final Paint mCircleBackgroundPaint = new Paint();
 
-    private int mBorderColor = DEFAULT_BORDER_COLOR;
+    private int mBorderColor;
     private int mBorderWidth = DEFAULT_BORDER_WIDTH;
     private int mCircleBackgroundColor = DEFAULT_CIRCLE_BACKGROUND_COLOR;
 
@@ -72,6 +71,7 @@ public class RoundImageView extends ImageView {
     public RoundImageView(Context context) {
         super(context);
 
+        mBorderColor = context.getResources().getColor(R.color.colorOutline);
         init();
     }
 
@@ -82,10 +82,11 @@ public class RoundImageView extends ImageView {
     public RoundImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
+        mBorderColor = context.getResources().getColor(R.color.colorOutline);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView, defStyle, 0);
 
         mBorderWidth = a.getDimensionPixelSize(R.styleable.RoundImageView_borderWidth, DEFAULT_BORDER_WIDTH);
-        mBorderColor = a.getColor(R.styleable.RoundImageView_borderColor, DEFAULT_BORDER_COLOR);
+        mBorderColor = a.getColor(R.styleable.RoundImageView_borderColor, mBorderColor);
         mBorderOverlay = a.getBoolean(R.styleable.RoundImageView_civ_border_overlay, DEFAULT_BORDER_OVERLAY);
         mCircleBackgroundColor = a.getColor(R.styleable.RoundImageView_civ_circle_background_color, DEFAULT_CIRCLE_BACKGROUND_COLOR);
 

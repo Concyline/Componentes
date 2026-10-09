@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorTitle">#484848</color>
-    <color name="colorDescription">#484848</color>
-    <color name="tint">#444</color>
+    <color name="colorSurface">#121416</color>
+    <color name="colorSurfaceVariant">#202428</color>
+    <color name="colorOnSurface">#F2F4F5</color>
+    <color name="colorOnSurfaceVariant">#C1C8CE</color>
+    <color name="colorOutline">#89939C</color>
+    <color name="colorOutlineVariant">#56616B</color>
+    <color name="colorFocus">#00D9A3</color>
+    <color name="colorDisabledSurface">#30363B</color>
+    <color name="colorDisabledContent">#B0B8BF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorInverseSurface">#E4E7EB</color>
+    <color name="colorOnInverseSurface">#202428</color>
+    <color name="colorOnStatus">#FFFFFF</color>
+
+    <color name="colorTitle">#F2F4F5</color>
+    <color name="colorDescription">#C1C8CE</color>
+    <color name="tint">#E0E4E7</color>
     <color name="colorAccent">#00D9A3</color>
-    <color name="colorTextEditext">#FFFFFF</color>
-    <!--<color name="colorTextEditext">#757575</color>-->
-    <color name="colorTextEditextKeyBoard">#9E9E9E</color>
-    <color name="colorTextButtonKeyBoard">#9E9E9E</color>
-    <color name="hint_text_color">#9E9E9E</color>
-    <color name="actionbar_title_color">#AAC6BD</color>
+    <color name="colorTextEditext">#F2F4F5</color>
+    <color name="colorTextEditextKeyBoard">#F2F4F5</color>
+    <color name="colorTextButtonKeyBoard">#F2F4F5</color>
+    <color name="hint_text_color">#B0B8BF</color>
+    <color name="actionbar_title_color">#FFFFFF</color>
 
     <color name="colorPrimary">#005F92</color>
 
-    <color name="colorSuccess">#32CD32</color>
-    <color name="colorWarning">#FF8C00</color>
-    <color name="colorError">#CC0000</color>
-    <color name="colorInfo">#2879C1</color>
-    <color name="black">#000</color>
+    <color name="colorSuccess">#287A45</color>
+    <color name="colorWarning">#8A4B08</color>
+    <color name="colorError">#B3261E</color>
+    <color name="colorInfo">#005F92</color>
+    <color name="colorShadow">#080A0C</color>
+    <color name="black">#000000</color>
     <color name="pink">#DC73FF</color>
-    <color name="white">#FFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="cyan">#AAA</color>
-
 </resources>

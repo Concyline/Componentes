@@ -23,7 +23,7 @@ public class KeyBoardDialog {
     private boolean cancelable = true;
     private int backgroundResource = R.drawable.bg_dialog_round_ui;
     private int HEIGTH_PERCENTAGE = -2;
-    private int backgroundColor = R.color.white;
+    private int backgroundColor = R.color.colorSurface;
     private boolean justNumber = true;
     private OnDismissListener onDismissListener;
 

@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat" />
 
 
     <LinearLayout
@@ -33,6 +33,7 @@
             android:layout_marginTop="10dp"
             android:lineSpacingExtra="3dp"
             android:justificationMode="inter_word"
+            android:textColor="@color/colorOnSurface"
             android:text="TextView" />
 
     </LinearLayout>
@@ -42,12 +43,14 @@
         android:id="@+id/okTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginRight="10dp"
+        android:minHeight="48dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:padding="15dp"
         android:text="Ok"
-        android:textColor="@color/colorPrimary"
+        android:focusable="true"
+        android:textColor="@color/colorFocus"
         android:textStyle="bold" />
 
 </LinearLayout>

@@ -12,6 +12,7 @@
         android:id="@+id/legendaTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorOnSurfaceVariant"
         android:text="legenda"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +21,7 @@
 <!--
     <EditText
         android:id="@+id/editText"
+        android:layout_marginTop="4dp"
         android:saveEnabled="false"
         android:freezesText="false"
         android:layout_width="match_parent"
@@ -27,7 +29,7 @@
         android:background="@drawable/edit_selector_ui"
         android:textSize="@dimen/tamDescricaoUi"
         android:textColorHint="@color/hint_text_color"
-        android:textColor="@color/colorTextEditext"
+        android:textColor="@color/component_input_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/legendaTextView" />
@@ -41,7 +43,7 @@
         android:background="@drawable/edit_selector_ui"
         android:textSize="@dimen/tamDescricaoUi"
         android:textColorHint="@color/hint_text_color"
-        android:textColor="@color/colorTextEditext"
+        android:textColor="@color/component_input_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/legendaTextView" />
@@ -50,13 +52,13 @@
         android:id="@+id/requiredImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:padding="10dp"
-        app:tint="@color/colorAccent"
+        android:translationY="-2dp"
+        app:tint="@color/colorFocus"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/legendaTextView"
+        app:layout_constraintTop_toTopOf="@+id/editText"
         app:srcCompat="@drawable/ic_error_outline_black_24dp" />
 
     <ImageView
@@ -65,9 +67,9 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/editText"
         app:layout_constraintEnd_toStartOf="@+id/requiredImageView"
-        app:layout_constraintTop_toBottomOf="@+id/legendaTextView"
+        app:layout_constraintTop_toTopOf="@+id/editText"
         app:srcCompat="@drawable/outline_more_horiz_black_48dp" />
 
     <ImageView
@@ -78,7 +80,7 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/editText"
         app:layout_constraintEnd_toStartOf="@+id/iconRigthImageView"
-        app:layout_constraintTop_toBottomOf="@+id/legendaTextView"
+        app:layout_constraintTop_toTopOf="@+id/editText"
         app:srcCompat="@drawable/outline_more_horiz_black_48dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

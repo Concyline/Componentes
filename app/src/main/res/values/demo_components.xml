@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="demo_components_title">Catálogo de componentes</string>
+    <string name="demo_components_description">Amostras dos componentes da biblioteca. Toque nos controles e role a tela para explorar.</string>
+    <string name="demo_text_components">Textos e campos</string>
+    <string name="demo_description_text">Texto de descrição renderizado pelo componente da biblioteca.</string>
+    <string name="demo_text_title">TextViewTitle</string>
+    <string name="demo_email_title">EditTextTitle</string>
+    <string name="demo_email_hint">Digite um e-mail</string>
+    <string name="demo_required_email">Preencha este campo para validar</string>
+    <string name="demo_validate_field">Validar campo obrigatório</string>
+    <string name="demo_cpf_hint">Digite os números do documento</string>
+    <string name="demo_masked_field_title">EditTextTitle com máscara</string>
+    <string name="demo_city_hint">Digite uma cidade</string>
+    <string name="demo_autocomplete_title">EditTextTitleAutoComplete</string>
+    <string name="demo_search_hint">Digite para pesquisar</string>
+    <string name="demo_search_title">EditTextSearch</string>
+    <string name="demo_calendar_title">EditTextCalendar (data e hora)</string>
+    <string name="demo_currency_hint">Digite um valor</string>
+    <string name="demo_currency_composite_title">EditTexCurrency</string>
+    <string name="demo_currency_edit_text_caption">CurrencyEditText</string>
+    <string name="demo_spinner_title">SpinnerTitle</string>
+    <string name="demo_help_button_caption">HelpButton</string>
+    <string name="demo_help_message">HelpButton: este diálogo explica como apresentar ajuda contextual ao usuário.</string>
+    <string name="demo_progress_components">Progresso</string>
+    <string name="demo_progress_button">ProgressButton</string>
+    <string name="demo_progress_image_caption">ProgressImageView — toque para alternar o carregamento</string>
+    <string name="demo_dot_loader_caption">DotLoader</string>
+    <string name="demo_geometric_progress_caption">GeometricProgressView</string>
+    <string name="demo_show_progress_dialog">Mostrar ProgressIndeterminate</string>
+    <string name="demo_image_components">Imagens e espaço</string>
+    <string name="demo_image_custom_caption">ImageViewCustom — toque e segure</string>
+    <string name="demo_long_press_image">Imagem de demonstração; toque e segure para ver o popup</string>
+    <string name="demo_image_tag">Popup do ImageViewCustom</string>
+    <string name="demo_round_image_caption">RoundImageView</string>
+    <string name="demo_round_image">RoundImageView circular</string>
+    <string name="demo_rounded_image_caption">RoundishImageView</string>
+    <string name="demo_rounded_image">RoundishImageView com cantos arredondados</string>
+    <string name="demo_zoom_image_caption">ZoomFrameImageView</string>
+    <string name="demo_zoom_image">ZoomFrameImageView com animação de zoom</string>
+    <string name="demo_empty_space">EspacoVago</string>
+    <string name="demo_list_gesture_components">Lista e gesto</string>
+    <string name="demo_recycler_view_caption">RecyclerViewButton com BaseAdapter</string>
+    <string name="demo_swipe_layout_caption">SwipeLayout</string>
+    <string name="demo_swipe_action">Ação</string>
+    <string name="demo_swipe_instruction">Deslize para a esquerda para revelar a ação</string>
+    <string name="demo_show_custom_dialog">Mostrar CustomDialog</string>
+    <string name="demo_show_alert">Mostrar CDialog</string>
+    <string name="demo_show_keyboard">Mostrar KeyBoardDialog</string>
+    <string name="demo_custom_dialog_title">CustomDialog</string>
+    <string name="demo_custom_dialog_message">Exemplo de conteúdo inserido em um diálogo customizado da biblioteca.</string>
+    <string name="demo_loading_message">Carregando exemplo...</string>
+    <string name="demo_keyboard_result">Valor informado: %1$s</string>
+    <string name="demo_field_valid">Campo preenchido corretamente</string>
+    <string name="demo_field_invalid">Preencha o campo antes de continuar</string>
+    <string name="demo_refresh_result">Atualização de demonstração concluída</string>
+    <string-array name="demo_component_options">
+        <item>Opção um</item>
+        <item>Opção dois</item>
+        <item>Opção três</item>
+    </string-array>
+    <integer-array name="demo_loader_colors">
+        <item>-16752750</item>
+        <item>-16721501</item>
+        <item>-14124607</item>
+    </integer-array>
+</resources>

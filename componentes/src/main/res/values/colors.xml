@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorTitle">#484848</color>
-    <color name="colorDescription">#484848</color>
-    <color name="tint">#444</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorSurfaceVariant">#F5F7F8</color>
+    <color name="colorOnSurface">#30343B</color>
+    <color name="colorOnSurfaceVariant">#5F6872</color>
+    <color name="colorOutline">#737C85</color>
+    <color name="colorOutlineVariant">#B1BCBE</color>
+    <color name="colorFocus">#005F92</color>
+    <color name="colorDisabledSurface">#E1E1E1</color>
+    <color name="colorDisabledContent">#5E666F</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorInverseSurface">#30343B</color>
+    <color name="colorOnInverseSurface">#FFFFFF</color>
+    <color name="colorOnStatus">#FFFFFF</color>
+
+    <color name="colorTitle">#30343B</color>
+    <color name="colorDescription">#5F6872</color>
+    <color name="tint">#444444</color>
     <color name="colorAccent">#00D9A3</color>
     <color name="colorTextEditext">#757575</color>
     <color name="colorTextEditextKeyBoard">#444444</color>
     <color name="colorTextButtonKeyBoard">#444444</color>
-    <color name="hint_text_color">#9E9E9E</color>
+    <color name="hint_text_color">#6D747C</color>
     <color name="actionbar_title_color">#FFFFFF</color>
 
     <color name="colorPrimary">#005F92</color>
 
-    <color name="colorSuccess">#32CD32</color>
-    <color name="colorWarning">#FF8C00</color>
-    <color name="colorError">#CC0000</color>
-    <color name="colorInfo">#2879C1</color>
-    <color name="black">#000</color>
+    <color name="colorSuccess">#287A45</color>
+    <color name="colorWarning">#8A4B08</color>
+    <color name="colorError">#B3261E</color>
+    <color name="colorInfo">#005F92</color>
+    <color name="colorShadow">#D5DADD</color>
+    <color name="black">#000000</color>
     <color name="pink">#DC73FF</color>
-    <color name="white">#FFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="cyan">#AAA</color>
-
 </resources>

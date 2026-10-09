@@ -144,7 +144,7 @@ public class EditTextSearch extends FrameLayout {
         setInputType(editText, inputType, 1);
 
         if(coricon == 1){
-            coricon = R.color.colorAccent; // SET DEFAULT
+            coricon = getResources().getColor(R.color.colorFocus);
         }
 
         imageView.setColorFilter(new PorterDuffColorFilter(coricon , PorterDuff.Mode.SRC_IN));

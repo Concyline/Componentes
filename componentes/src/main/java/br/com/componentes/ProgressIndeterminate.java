@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.util.DisplayMetrics;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Window;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -24,10 +24,31 @@ public class ProgressIndeterminate {
     private GeometricProgressView progressBarUi;
     private int background = 0;
     private boolean multColor = false;
+    private int multColorIndex;
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private final int[] multicolorPalette = {
+            Color.RED,
+            Color.MAGENTA,
+            Color.GREEN,
+            Color.BLUE
+    };
+    private final Runnable multicolorRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (!multColor || !dialog.isShowing() || progressBarUi == null) {
+                return;
+            }
+
+            progressBarUi.setColor(multicolorPalette[multColorIndex]);
+            multColorIndex = (multColorIndex + 1) % multicolorPalette.length;
+            mainHandler.postDelayed(this, 1000);
+        }
+    };
 
     public ProgressIndeterminate(Context context) {
         this.context = context;
         dialog = new Dialog(context);
+        dialog.setOnDismissListener(ignored -> stopMulticolorAnimation());
     }
 
     public ProgressIndeterminate create(String message) {
@@ -51,7 +72,7 @@ public class ProgressIndeterminate {
         dialog.getWindow().setLayout(width - 100, 300);
 
         constraintLayout = dialog.findViewById(R.id.rl);
-        constraintLayout.setBackgroundColor(context.getResources().getColor(R.color.white));
+        constraintLayout.setBackgroundColor(context.getResources().getColor(R.color.colorSurface));
 
         progressBarUi = dialog.findViewById(R.id.progressBarUi);
 
@@ -107,37 +128,30 @@ public class ProgressIndeterminate {
 
     public ProgressIndeterminate multColor(boolean multColor){
         this.multColor = multColor;
+        if (multColor && dialog.isShowing()) {
+            startMulticolorAnimation();
+        } else if (!multColor) {
+            stopMulticolorAnimation();
+        }
         return this;
     }
 
     public ProgressIndeterminate show() {
         dialog.show();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    while (multColor) {
-                        //progressBarUi.getIndeterminateDrawable().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
-                        progressBarUi.setColor(Color.RED);
-                        Thread.sleep(1000);
-                        //progressBarUi.getIndeterminateDrawable().setColorFilter(Color.MAGENTA, PorterDuff.Mode.MULTIPLY);
-                        progressBarUi.setColor(Color.MAGENTA);
-                        Thread.sleep(1000);
-                       // progressBarUi.getIndeterminateDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
-                        progressBarUi.setColor(Color.GREEN);
-                        Thread.sleep(1000);
-                       // progressBarUi.getIndeterminateDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.MULTIPLY);
-                        progressBarUi.setColor(Color.BLUE);
-                        Thread.sleep(1000);
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
+        startMulticolorAnimation();
         return this;
+    }
+
+    private void startMulticolorAnimation() {
+        stopMulticolorAnimation();
+        if (multColor && dialog.isShowing() && progressBarUi != null) {
+            multColorIndex = 0;
+            mainHandler.post(multicolorRunnable);
+        }
+    }
+
+    private void stopMulticolorAnimation() {
+        mainHandler.removeCallbacks(multicolorRunnable);
     }
 
     public static ProgressIndeterminate show(Context context, String mesagem){
