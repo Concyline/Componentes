@@ -89,6 +89,7 @@ Todas as alterações significativas neste projeto serão documentadas neste arq
 
 ### Changed
 
+- Fixada em `48dp` a altura dos campos de entrada padrão, de data, financeiro, autocomplete e busca, usando a dimensão comum de alvo de toque para evitar variações visuais entre componentes.
 - Organizadas as paletas clara/escura da biblioteca com tokens semânticos para superfícies, textos, bordas, foco, desabilitado e cores de estado, mantendo nomes de recursos legados e sem impor um tema global ao app consumidor.
 - Aplicados os tokens em campos, spinners, labels, popups, diálogos, progresso e ícones; campos desabilitados também recebem texto apropriado ao estado. Removidos hardcodes de cores de interface e atualizados os padrões de erro, foco e progresso para acompanhar o tema, sem alterar dimensões, formas ou interação dos componentes.
 - Tornada rolável a mensagem do `CDialog` sem alterar a dimensão da janela; corrigido o contraste da ação “Ok” do `HelpDialog` pelo token temático `colorFocus`.

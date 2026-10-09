@@ -22,7 +22,7 @@
         android:id="@+id/editText"
         android:layout_marginTop="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/accessibility_touch_target"
         android:background="@drawable/edit_selector_ui"
         android:textSize="@dimen/tamDescricaoUi"
         android:textColor="@color/component_input_text"
