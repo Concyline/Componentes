@@ -1,0 +1,18 @@
+# Copie este arquivo para cada projeto como .reference.yml.
+id: PROJECT_XXX
+name: Nome do projeto
+status: REFERENCE
+created_at: YYYY-MM-DD
+updated_at: YYYY-MM-DD
+source: internal-authorized
+license: definir
+approved_for_reference: false
+sensitivity: sanitized
+technologies: []
+versions: []
+formats: []
+tags: []
+purpose: Descrever a finalidade da referência
+allowed_use:
+  - consultation
+restrictions: []
